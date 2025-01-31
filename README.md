@@ -12,4 +12,13 @@ Projek ini bertujuan untuk menjawab pertanyaan berikut:
 3. Website yang mendemonstrasikan kemampuan model
 
 ## Dataset
-- https://www.kaggle.com/datasets/hopesb/student-depression-dataset 
+- https://www.kaggle.com/datasets/hopesb/student-depression-dataset.
+
+## Link website aplikasi
+- https://depression-risk-assessment.streamlit.app/
+
+## Video demo penggunaan aplikasi
+- https://youtu.be/qTZRZB-TxGE 
+
+## Video presentasi projek
+- https://youtu.be/DQWeNKIEiIo 
