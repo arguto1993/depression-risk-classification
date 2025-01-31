@@ -46,8 +46,8 @@ The Depression Risk Assessment App uses machine learning to help users evaluate 
 3. **Get Prediction:**
    - Click the **"Predict Depression Risk"** button to submit your responses.
    - The app will display the prediction results:
-     - If a higher risk of depression is detected, you will see an error message.
-     - If a lower risk is detected, you will see a success message.
+     - If a higher risk of depression is detected, you will see a message in red.
+     - If a lower risk is detected, you will see a message in green.
    - The app will also display the confidence score of the prediction.
 
 ### Dashboard Tab
