@@ -46,8 +46,8 @@ Aplikasi Penilaian Risiko Depresi menggunakan pembelajaran mesin untuk membantu 
 3. **Dapatkan Prediksi:**
    - Klik tombol **"Prediksi Risiko Depresi"** untuk mengirimkan respons Anda.
    - Aplikasi akan menampilkan hasil prediksi:
-     - Jika terdeteksi risiko depresi yang lebih tinggi, Anda akan melihat pesan kesalahan.
-     - Jika terdeteksi risiko yang lebih rendah, Anda akan melihat pesan sukses.
+     - Jika terdeteksi risiko depresi yang lebih tinggi, Anda akan melihat pesan berwarna merah.
+     - Jika terdeteksi risiko yang lebih rendah, Anda akan melihat pesan berwarna hijau.
    - Aplikasi juga akan menampilkan skor kepercayaan dari prediksi tersebut.
 
 ### Tab Dashboard
