@@ -59,19 +59,15 @@ def predict_depression(new_data):
 
 
 # Streamlit App
-st.title("Predict Student Depression With Machine Learning")
+st.title("Depression Risk Assessment With Machine Learning")
 
 tab1, tab2, tab3 = st.tabs([
-    "Student Depression in India",
-    "Depression Prediction",
+    "Risk Assessment",
+    "Dashboard",
     "About"
 ])
 
 with tab1:
-    st.header("Student Depression Dashboard")
-    st.markdown("[View Dashboard on Looker Studio](https://lookerstudio.google.com/reporting/8fee9fb4-8d82-4460-9943-61726e9887ad)")
-
-with tab2:
     st.header("Depression Risk Assessment")
 
     # Collect user input
@@ -133,17 +129,21 @@ with tab2:
             st.success("Lower Risk of Depression Detected")
         st.write(f"Confidence: {result['probability']*100:.2f}%")
 
+with tab2:
+    st.header("Student Depression Dashboard")
+    # st.components.v1.iframe("https://lookerstudio.google.com/reporting/8fee9fb4-8d82-4460-9943-61726e9887ad", height=900)
+    st.markdown("[View Dashboard on Looker Studio](https://lookerstudio.google.com/reporting/8fee9fb4-8d82-4460-9943-61726e9887ad)")
+
 with tab3:
     st.header("About This Project")
     st.markdown("""
-    **Disclaimer:** This is a machine learning demo for depression risk assessment.
-
+    **Disclaimer:** This is a machine learning demo for depression risk assessment. The model is trained on a dataset of [student-depression-dataset](https://www.kaggle.com/datasets/hopesb/student-depression-dataset) and may not be suitable for all individuals.
     - **Not a Medical Diagnosis:** This tool CANNOT replace professional medical advice.
     - If you're experiencing depression or mental health challenges, please consult a healthcare professional.
 
     **Project Details:**
     - Created by 4 Data Science students from Dicoding Indonesia Bootcamp 2024-2025
-    - Purpose: Demonstrate machine learning application in mental health screening especially for student depression risk assesment.
+    - Purpose: Demonstrate machine learning application in mental health screening especially for student depression risk assessment.
 
     **Remember:** Your mental health is important. Seek professional help if needed.
     """)
