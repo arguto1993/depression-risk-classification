@@ -1,7 +1,6 @@
 import streamlit as st
 import pickle
 import pandas as pd
-from sklearn.preprocessing import LabelEncoder
 
 # Load the model
 @st.cache_resource
@@ -13,7 +12,7 @@ def load_model():
 # Prediction function
 def predict_depression(new_data):
     model = load_model()
-    
+
     # Predefined order and names of features from training
     selected_features = [
         'Have you ever had suicidal thoughts ?', 'Academic Pressure',
@@ -37,7 +36,7 @@ def predict_depression(new_data):
     for feature in ['Have you ever had suicidal thoughts ?', 'Dietary Habits', 'Family History of Mental Illness']:
         if feature in processed_data:
             processed_data[feature] = label_encoders[feature].transform([processed_data[feature]])[0]
-    
+
     # Map Sleep Duration
     processed_data['Sleep Duration'] = processed_data['Sleep Duration'].map(sleep_duration_mapping).fillna(-1).astype(int)
 
@@ -59,6 +58,12 @@ def predict_depression(new_data):
 
 
 # Streamlit App
+st.set_page_config(
+    page_title="Depression Risk Assessment",
+    # page_icon="favicon.png",
+    # layout="wide",
+)
+
 st.title("Depression Risk Assessment With Machine Learning")
 
 tab1, tab2, tab3 = st.tabs([
@@ -74,15 +79,20 @@ with tab1:
     name = st.text_input("Name")
     col1, col2 = st.columns(2)
     with col1:
-        gender = st.selectbox("Gender", ["", "Male", "Female", "Other"])
-        profession = st.text_input("Profession")
+        age = st.number_input("Age", min_value=0, max_value=100, step=1)
     with col2:
+        gender = st.selectbox("Gender", ["", "Male", "Female", "Other"])
+
+    col3, col4 = st.columns(2)
+    with col3:
+        profession = st.text_input("Profession")
+    with col4:
         city = st.text_input("City of Domicile")
 
     # Prediction features
     academic_pressure = st.slider("Academic Pressure (5 = Most Pressure)", 0, 5, 0)
     work_pressure = st.slider("Work Pressure", 0, 5, 0)
-    cgpa = st.number_input("CGPA", min_value=0.0, max_value=10.0, step=0.1)
+    cgpa = st.number_input("CGPA (0.0 - 10.0)", min_value=0.0, max_value=10.0, step=0.1)
     study_satisfaction = st.slider("Study Satisfaction", 0, 10, 0)
     job_satisfaction = st.slider("Job Satisfaction", 0, 10, 0)
 
@@ -116,7 +126,7 @@ with tab1:
             'Family History of Mental Illness': [family_history],
             'Sleep Duration': [sleep_duration],
             'Work/Study Hours': [work_study_hours],
-            'Age': [20],  # Default age, you might want to add an input for this
+            'Age': [age],
             'CGPA': [cgpa]
         })
 
@@ -142,8 +152,12 @@ with tab3:
     - If you're experiencing depression or mental health challenges, please consult a healthcare professional.
 
     **Project Details:**
-    - Created by 4 Data Science students from Dicoding Indonesia Bootcamp 2024-2025
+    - Developed by 4 Data Science students from Dicoding Indonesia Bootcamp 2024-2025
     - Purpose: Demonstrate machine learning application in mental health screening especially for student depression risk assessment.
 
     **Remember:** Your mental health is important. Seek professional help if needed.
-    """)
+    """
+    )
+
+    st.markdown("[Project Brief (ID)](https://drive.google.com/file/d/1umXcOXX_fML-y_UdQEZ2eGLYNk7C_VZi/view?usp=sharing)")
+    st.markdown("[Github Repository](https://github.com/arguto1993/depression-risk-classification/tree/main)")
